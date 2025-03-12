@@ -1,55 +1,55 @@
 # @elizaos/plugin-multiversx
 
-MultiversX blockchain integration plugin for Eliza OS that enables token management and transfers.
+Plugin de integração com a blockchain MultiversX para Eliza OS que permite gerenciamento e transferências de tokens.
 
-## Overview
+## Visão Geral
 
-This plugin aims to be the basis of all interactions with the MultiversX ecosystem.
+Este plugin serve como base para todas as interações com o ecossistema MultiversX.
 
-## Features
+## Funcionalidades
 
-- EGLD and ESDT token transfers
-- Token creation and management
-- Token swapping on xExchange
-- Liquidity pool creation and management
-- Multiple network support (mainnet, devnet, testnet)
-- Secure transaction signing
-- Automatic nonce management
-- Transaction status tracking
-- Built-in denomination handling
-- Comprehensive error handling
+- Transferências de tokens EGLD e ESDT
+- Criação e gerenciamento de tokens
+- Troca de tokens na xExchange
+- Criação e gerenciamento de pools de liquidez
+- Suporte a múltiplas redes (mainnet, devnet, testnet)
+- Assinatura segura de transações
+- Gerenciamento automático de nonce
+- Rastreamento de status de transações
+- Tratamento integrado de denominações
+- Tratamento abrangente de erros
 
-## Adding a new action
+## Adicionando uma nova ação
 
-Reuse providers and utilities from the existing actions where possible. Add more utilities if you think they will be useful for other actions.
+Reutilize provedores e utilitários das ações existentes sempre que possível. Adicione mais utilitários se achar que serão úteis para outras ações.
 
-1. Add the action to the `actions` directory. Try to follow the naming convention of the other actions.
-2. Export the action in the `index.ts` file.
+1. Adicione a ação ao diretório `actions`. Tente seguir a convenção de nomenclatura das outras ações.
+2. Exporte a ação no arquivo `index.ts`.
 
-## Installation
+## Instalação
 
 ```bash
 pnpm install @elizaos/plugin-multiversx
 ```
 
-## Configuration
+## Configuração
 
-The plugin requires environment variables or runtime settings:
+O plugin requer variáveis de ambiente ou configurações de runtime:
 
 ```env
-MVX_PRIVATE_KEY=your-wallet-private-key
-MVX_NETWORK=devnet  # mainnet, devnet, or testnet
-ACCESS_TOKEN_MANAGEMENT_TO=everyone  # you can put an userid to limit token managament to one user only (use same id as in the database)
+MVX_PRIVATE_KEY=sua-chave-privada-da-carteira
+MVX_NETWORK=devnet  # mainnet, devnet, ou testnet
+ACCESS_TOKEN_MANAGEMENT_TO=everyone  # você pode colocar um ID de usuário para limitar o gerenciamento de tokens a apenas um usuário (use o mesmo ID que está no banco de dados)
 ```
 
-## Usage
+## Uso
 
-### Token Transfer
+### Transferência de Tokens
 
 ```typescript
 import { multiversxPlugin } from "@elizaos/plugin-multiversx";
 
-// Send EGLD
+// Enviar EGLD
 const result = await eliza.execute({
     action: "SEND_TOKEN",
     content: {
@@ -59,7 +59,7 @@ const result = await eliza.execute({
     },
 });
 
-// Send ESDT
+// Enviar ESDT
 const result = await eliza.execute({
     action: "SEND_TOKEN",
     content: {
@@ -70,7 +70,7 @@ const result = await eliza.execute({
 });
 ```
 
-### Token Creation
+### Criação de Tokens
 
 ```typescript
 const result = await eliza.execute({
@@ -84,7 +84,7 @@ const result = await eliza.execute({
 });
 ```
 
-### Token Swap
+### Troca de Tokens
 
 ```typescript
 const result = await eliza.execute({
@@ -97,7 +97,7 @@ const result = await eliza.execute({
 });
 ```
 
-### Pool Creation
+### Criação de Pool de Liquidez
 
 ```typescript
 const result = await eliza.execute({
@@ -122,36 +122,36 @@ A criação de pool de liquidez permite que você crie um novo par de negociaç�
 
 Todos esses passos são automatizados pela ação `CREATE_POOL`.
 
-## Troubleshooting
+## Solução de Problemas
 
-### Common Issues
+### Problemas Comuns
 
-1. **Transaction Failures**
+1. **Falhas de Transação**
 
-    - Verify wallet has sufficient balance
-    - Check network configuration matches intended network
-    - Ensure correct token identifiers
-    - Verify recipient address format
+    - Verifique se a carteira tem saldo suficiente
+    - Confira se a configuração de rede corresponde à rede pretendida
+    - Garanta que os identificadores de token estejam corretos
+    - Verifique o formato do endereço do destinatário
 
-2. **Configuration Problems**
+2. **Problemas de Configuração**
 
-    - Validate private key format
-    - Check network selection is valid
-    - Ensure environment variables are properly set
-    - Verify wallet permissions for token operations
+    - Valide o formato da chave privada
+    - Verifique se a seleção de rede é válida
+    - Certifique-se de que as variáveis de ambiente estão configuradas corretamente
+    - Verifique as permissões da carteira para operações com tokens
 
-3. **Token Creation Issues**
+3. **Problemas na Criação de Tokens**
 
-    - Check token name and ticker format
-    - Verify EGLD balance for issuance fee
-    - Ensure unique token identifiers
-    - Monitor transaction status
+    - Verifique o formato do nome e ticker do token
+    - Confirme o saldo de EGLD para a taxa de emissão
+    - Garanta identificadores de token únicos
+    - Monitore o status da transação
 
-4. **Network Connectivity**
-    - Verify network endpoint availability
-    - Check API rate limits
-    - Monitor network status
-    - Ensure proper network selection
+4. **Problemas de Conectividade de Rede**
+    - Verifique a disponibilidade do endpoint da rede
+    - Confira os limites de taxa da API
+    - Monitore o status da rede
+    - Garanta a seleção correta da rede
 
 5. **Problemas na Criação de Pool de Liquidez**
     - Verifique se os tokens existem na rede
@@ -160,78 +160,78 @@ Todos esses passos são automatizados pela ação `CREATE_POOL`.
     - Monitore cada etapa da transação no explorador
     - Certifique-se de que a rede suporta a criação de pools de liquidez
 
-## Security Best Practices
+## Melhores Práticas de Segurança
 
-1. **Key Management**
+1. **Gerenciamento de Chaves**
 
-    - Never expose private keys in code
-    - Use environment variables for sensitive data
-    - Implement key rotation policies
-    - Monitor wallet activity
+    - Nunca exponha chaves privadas no código
+    - Use variáveis de ambiente para dados sensíveis
+    - Implemente políticas de rotação de chaves
+    - Monitore a atividade da carteira
 
-2. **Transaction Safety**
+2. **Segurança de Transações**
 
-    - Validate all transaction parameters
-    - Implement transaction limits
-    - Use proper denomination handling
-    - Double-check recipient addresses
+    - Valide todos os parâmetros de transação
+    - Implemente limites de transação
+    - Use tratamento adequado de denominação
+    - Verifique duas vezes os endereços dos destinatários
 
-3. **Network Security**
+3. **Segurança de Rede**
 
-    - Use secure network connections
-    - Implement retry mechanisms
-    - Monitor for suspicious activity
-    - Keep dependencies updated
+    - Use conexões de rede seguras
+    - Implemente mecanismos de retry
+    - Monitore atividades suspeitas
+    - Mantenha as dependências atualizadas
 
-4. **Error Handling**
-    - Implement comprehensive error logging
-    - Handle network timeouts gracefully
-    - Validate all user inputs
-    - Provide clear error messages
+4. **Tratamento de Erros**
+    - Implemente registro abrangente de erros
+    - Trate os timeouts de rede com elegância
+    - Valide todas as entradas do usuário
+    - Forneça mensagens de erro claras
 
-## Testing
+## Testes
 
-Run the test suite:
+Execute a suíte de testes:
 
 ```bash
 pnpm test
 ```
 
-Watch mode for development:
+Modo de observação para desenvolvimento:
 
 ```bash
 pnpm test:watch
 ```
 
-## Dependencies
+## Dependências
 
 - @multiversx/sdk-core: ^13.15.0
 - bignumber.js: ^9.1.2
 - tsup: ^8.3.5
 - vitest: ^2.1.5
 
-## Contributing
+## Contribuindo
 
-Contributions are welcome! Please see the [CONTRIBUTING.md](https://github.com/elizaOS/eliza/blob/main/CONTRIBUTING.md) file for more information.
+Contribuições são bem-vindas! Por favor, consulte o arquivo [CONTRIBUTING.md](https://github.com/elizaOS/eliza/blob/main/CONTRIBUTING.md) para mais informações.
 
-## Credits
+## Créditos
 
-This plugin integrates with the [MultiversX blockchain](https://multiversx.com/) using their official SDK.
+Este plugin integra-se com a [blockchain MultiversX](https://multiversx.com/) usando seu SDK oficial.
 
-Special thanks to:
+Agradecimentos especiais a:
 
-- The MultiversX team for developing the MultiversX blockchain
-- The Eliza community for their contributions and feedback.
+- A equipe MultiversX pelo desenvolvimento da blockchain MultiversX
+- A comunidade Eliza por suas contribuições e feedback.
 
-For more information about MultiversX blockchain capabilities:
+Para mais informações sobre as capacidades da blockchain MultiversX:
 
-- [MultiversX Documentation](https://docs.multiversx.com/)
-- [MultiversX Developer Portal](https://docs.multiversx.com/developers/getting-started/introduction)
-- [MultiversX GitHub Repository](https://github.com/multiversx/mx-sdk-js)
+- [Documentação MultiversX](https://docs.multiversx.com/)
+- [Portal do Desenvolvedor MultiversX](https://docs.multiversx.com/developers/getting-started/introduction)
+- [Repositório GitHub MultiversX](https://github.com/multiversx/mx-sdk-js)
 
-## License
+## Licença
 
-This plugin is part of the Eliza project. See the main project repository for license information.
+Este plugin é parte do projeto Eliza. Consulte o repositório principal do projeto para informações sobre licença.
 
 ## Integração com a Eliza
 
@@ -256,7 +256,7 @@ eliza.registerPlugin(multiversxPlugin);
 3. Configure as variáveis de ambiente necessárias:
 
 ```env
-MVX_PRIVATE_KEY=your-wallet-private-key
+MVX_PRIVATE_KEY=sua-chave-privada-da-carteira
 MVX_NETWORK=devnet  # mainnet, devnet, ou testnet
 ACCESS_TOKEN_MANAGEMENT_TO=everyone  # ou um ID de usuário específico
 ```
