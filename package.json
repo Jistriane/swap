@@ -11,6 +11,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@elizaos/plugin-multiversx": "0.25.6-alpha.1",
     "@multiversx/sdk-core": "^13.17.2",
     "axios": "^1.8.2",
     "crypto-browserify": "^3.12.1",
